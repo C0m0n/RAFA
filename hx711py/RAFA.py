@@ -12,7 +12,7 @@ num = 0
 pump = LED(13)
 solenoid = LED(19)
 
-weights = [100, 200, 300]
+weights = [500, 1000, 4000]
 
 ####################
 #Code for the scale#
@@ -40,17 +40,17 @@ print("Tare done! Add weight now...")
 #Code for the screen##
 ######################
 root = Tk()
-#root.geometry("1920x1080")
+root.geometry("1920x1080")
 frm = ttk.Frame(root, padding=10)
 frm.grid()
 numBottles = DoubleVar()
-scale_slider = Scale(frm, from_=0, to=20, variable=numBottles, width=50).grid(column=1, row=1)
-listbox = Listbox(frm, width=50)
+scale_slider = Scale(frm, from_=0, to=100, variable=numBottles, width=50).grid(column=1, row=1)
+listbox = Listbox(frm, width=6, height=3)
 listbox.insert(1,"500ml")
 listbox.insert(2, "1L")
 listbox.insert(3,"4L") 
-bottles_remaining = ttk.Label(frm, text='0', width=50)
-bottles_remaining.grid(column=1,row=3)
+bottles_remaining = ttk.Label(frm, text='0', width=3)
+bottles_remaining.grid(column=6,row=3)
 
 def test():
     print(listbox.curselection())
@@ -112,7 +112,7 @@ def update_weights():
 
 listbox.grid(column=0, row=1)
 ttk.Label(frm, text='Bottle Selection').grid(column=0, row=0)
-ttk.Label(frm, text='Bottles Remaining',width=50).grid(column=0, row=3)
+ttk.Label(frm, text='Bottles Remaining',width=50).grid(column=5, row=3)
 ttk.Button(frm, text="Start Filling", command=fillBottle).grid(column=1, row=0)
 ttk.Label(frm, text='500ml weight').grid(column=0, row=4)
 ttk.Label(frm, text='1L weight').grid(column=0, row=5)
